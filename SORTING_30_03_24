@@ -1,0 +1,85 @@
+DATE 30-03-2024
+
+Completed Soerting INSERTION, BUBBLE, SELECTION
+
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        
+         int A[]={12,4,8,15,16};
+      HelloWorld obj = new HelloWorld();
+        obj.bubbleSort(A, 5);
+        obj.selectionSort(A,5);
+        obj.insertionSort(A,5);
+    }
+    
+    
+     public void bubbleSort(int A[],int n){
+         boolean sorted=true;
+        for(int exterVar=n-1;exterVar>=0 && sorted;exterVar--){
+            sorted=false;
+            for(int i=0;i<exterVar;i++){
+                if(A[i+1]>A[i]){
+                    int temp=A[i+1];
+                    A[i+1]=A[i];
+                    A[i]=temp;
+                    sorted=true;
+                }
+            }
+        }
+        
+        for(int i=0;i<n;i++){
+            System.out.println(A[i]);
+        }
+    }
+    
+    
+    // public void insertionSort(int A[],int n){
+    //     int min=A[0];
+    //   while(i<n){
+    //       min=A[i];
+    //       for(int j=)
+         
+    //   }
+    
+    public void selectionSort(int A[], int n){
+        int min;
+        for(int i=0;i<n;i++){
+            min=i;
+            for(int j=i+1;j<n;j++){
+                if(A[j]<A[min]){
+                    min=j;
+                }
+                int temp=A[min];
+                A[min]=A[i];
+                A[i]=temp;
+            }
+        }
+        
+        for(int i=0;i<n;i++){
+            System.out.println(A[i]);
+        }
+    }
+    
+    public void insertionSort(int A[],int n){
+        int i,j,replace;
+        for(i=1;i<n;i++){
+            replace=A[i];
+            j=i;
+            while(A[j-1]>replace && j>=1){
+                A[j]=A[j-1];
+                j--;
+            }
+            A[j]=replace;
+        }
+        for(int k=0;k<n;k++){
+            System.out.println(A[k]);
+        }
+    }
+}
+
+
+    
