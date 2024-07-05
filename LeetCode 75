@@ -1,0 +1,153 @@
+// LeetCode 75
+*****************Array / String***************(
+1768. Merge Strings Alternately
+
+class Solution {
+    public String mergeAlternately(String word1, String word2) {
+      //word1 >>> length1
+      //word2>>> length2
+    // "abc"
+   //  "defg"
+int totalLength=word1.length()+word2.length();
+int i=0;
+int j=0;
+int k=0;
+ char[] arrList=new char[totalLength];
+while(i<totalLength){
+
+
+    if(j<word1.length()){  //0<3    a[]={a} j=1
+        arrList[i]=word1.charAt(j);
+        j++;
+        i++;
+    }
+     if( k<word2.length()){   //  a[]={a,b}  k=1
+        arrList[i]=word2.charAt(k);
+        k++;
+        i++;
+   
+}
+}
+if(arrList!=null){
+String result=new String(arrList);
+return result;
+}
+return " ";
+
+    }
+}
+
+
+
+151. Reverse Words in a String
+class Solution {
+    public String reverseWords(String s) {
+
+        // arr [string] === {the, sky , is, blue}
+      String[] arr= s.split(" ");
+        // reverse [] >> string
+        String result="";
+       for(int i=arr.length-1;i>=0;i--){
+        if(arr[i]==""){
+            continue;
+        }
+        result+=arr[i];
+        result+=" ";
+       }
+     result=result.trim();
+       return result;
+    }
+}
+
+
+
+
+334. Increasing Triplet Subsequence
+
+public class Solution {
+    public boolean increasingTriplet(int[] nums) {
+        if (nums == null || nums.length < 3) {
+            return false;
+        }
+        
+        int first = Integer.MAX_VALUE;
+        int second = Integer.MAX_VALUE;
+        
+        for (int num : nums) {
+            if (num <= first) {
+                first = num; // update potential first element
+            } else if (num <= second) {
+                second = num; // update potential second element
+            } else {
+                return true; // we found the triplet (first < second < num)
+            }
+        }
+        
+        return false; // no triplet found
+    }
+}
+
+
+**********************Two Pointers***********************
+
+11. Container With Most Water
+
+class Solution {
+    public int maxArea(int[] height) {
+    int maxLeft=Integer.MIN_VALUE;
+    int maxRight=Integer.MIN_VALUE;
+    int maximumOut=0;
+    int i=0;
+    int j=height.length-1;
+    while(i<j){
+        if(height[i]>height[j])
+        {     
+            int area=height[j]*(j-i);
+            if(area>maximumOut){
+                maximumOut=area;
+            }
+            j--;
+        }
+        else   //if(height[i]<height[j])
+        {     
+            int area=height[i]*(j-i);
+            if(area>maximumOut){
+                maximumOut=area;
+            }
+            i++;
+        } 
+    }
+    return maximumOut;
+    }
+}
+
+
+
+1679. Max Number of K-Sum Pairs
+
+class Solution {
+    public int maxOperations(int[] nums, int k) {
+       // [4,3,2,1] =5
+         Arrays.sort(nums);
+        int i=0;
+        int j=nums.length-1;
+        int count=0;
+        while(i<j){
+
+            if(nums[i]+nums[j]==k){
+                count++;
+                i++;
+                j--;
+            }else 
+            if(nums[i]+nums[j]<k){
+                i++;
+            } else
+            if(nums[i]+nums[j]>k){
+                j--;
+            } 
+        }
+return count;
+    }
+}
+
+
