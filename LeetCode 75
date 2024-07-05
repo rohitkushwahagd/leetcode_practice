@@ -151,3 +151,47 @@ return count;
 }
 
 
+
+**********************8Sliding Window*********************
+
+Maximum Average Subarray I
+
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+    double sumOfK=0;
+    if(nums.length==0){
+        return 0.00;
+    }
+for(int i=0;i<k;i++){
+    sumOfK+=nums[i];
+}
+   double avg=sumOfK/k;
+int i=0;
+   for(int j=k;j<nums.length;j++){
+   sumOfK=sumOfK+nums[j]-nums[i];
+    double localAvg=sumOfK/k;
+    if(localAvg>avg){
+        avg=localAvg;
+    }
+   
+    i++;
+   }
+        return avg;
+    }
+}  /// int/4 >>> giving us roundof double value
+
+
+// ///class Solution {
+//     public double findMaxAverage(int[] nums, int k) {
+//         int sum = 0;
+//        for(int i = 0; i < k; i ++) 
+//            sum += nums[i];
+//        int maxSum = sum;
+//        for(int i = k; i < nums.length; i ++) {
+//            sum += nums[i] - nums[i - k];
+//            maxSum = Math.max(maxSum, sum);
+//        }
+//        return (double)maxSum / k;
+//     }
+// }
+
