@@ -63,3 +63,47 @@ if(col1==0){
 //     [5,0, 7, 8],
 //     [0,10,11,12],
 //     [13,14,15,0]]
+\\\
+
+
+
+
+
+
+
+
+118. Pascal's Triangle
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+// n=5 r=2  n!/(n-r)!*r!
+//5*4/ 2*1   N-1 till r time/ r till 1
+//
+ List<List<Integer>> ans = new ArrayList<>();
+  // Store the entire Pascal's triangle:
+        for (int row = 1; row <= numRows; row++) {
+            List<Integer> tempLst = new ArrayList<>(); // temporary list
+            for (int col = 1; col <= row; col++) {
+                System.out.println(row + " " + col);
+                tempLst.add(nCr(row - 1, col - 1));
+                 
+            }
+ System.out.println("check");
+            ans.add(tempLst);
+        }
+        return ans;
+
+    }
+
+    
+
+     public static int nCr(int n, int r) {
+        long res = 1;
+        // calculating nCr:
+        for (int i = 0; i < r; i++) {
+            res = res * (n - i);
+            res = res / (i + 1);
+        }
+        return (int) res;
+    }
+}
