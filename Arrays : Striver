@@ -1,0 +1,65 @@
+Arrays :
+Striver 
+
+73. Set Matrix Zeroes
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        //optimize approach is that 
+        // col1 to trach if fisrt column having any number as zero
+        // if having make it 
+int col1=1;
+int sizeOfRow=matrix.length;
+int sizeOfColumn=matrix[0].length;
+
+
+// this we have written to check if first column having any number with 0
+for(int i=0;i<sizeOfRow;i++){
+    if(matrix[i][0]==0){
+        col1=0;
+    }
+}
+
+for(int i=0;i<sizeOfRow;i++){
+    for(int j=0;j<sizeOfColumn;j++){
+       
+        if(matrix[i][j]==0){
+            if(j!=0){    /// yaha pai atka tha
+            matrix[0][j]=0;
+            }
+            matrix[i][0]=0;
+        }
+    }
+}
+for(int i=sizeOfRow-1;i>0;i--){
+    for(int j=sizeOfColumn-1;j>0;j--){
+        if(matrix[0][j]==0||matrix[i][0]==0){
+            matrix[i][j]=0;
+        }
+    }
+}
+if(matrix[0][0]==0){
+ for(int j=0;j<sizeOfColumn;j++){
+matrix[0][j]=0;
+}
+}
+if(col1==0){
+    for(int i=0;i<sizeOfRow;i++){
+    matrix[i][0]=0;
+}
+}
+        //[[0,1,2,0],
+        // [0,4,5,0],
+        // [0,3,1,0]]
+    }
+}
+
+
+//[[1,1,1],
+//[1,0,1],
+//[1,1,1]]
+
+// //[ [1,2, 3, 4],
+//     [5,0, 7, 8],
+//     [0,10,11,12],
+//     [13,14,15,0]]
